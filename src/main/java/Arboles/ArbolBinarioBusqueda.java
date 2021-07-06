@@ -372,7 +372,6 @@ public class ArbolBinarioBusqueda <K extends Comparable<K>, V>
         recorrido.add(nodoActual.getClave());
     }
     
-    
     public int cantidadHijosVacios() {
         if (NodoBinario.esNodoVacio(this.raiz)) {
             return 0;
@@ -519,8 +518,55 @@ public class ArbolBinarioBusqueda <K extends Comparable<K>, V>
         
         return nivel ;
     }
-    
-    
-    
-    
+    //Parcial 1 2/20 arbol binario que retorne verdadero si el arbol recibido es identico al arbol recibido"
+    public boolean esIdentico(ArbolBinarioBusqueda<K,V> arbolP){
+        return this.esIdentico(this.raiz,arbolP.raiz);
+    }
+    private boolean esIdentico(NodoBinario<K,V> nodoA, NodoBinario<K,V> nodoB){
+        if( NodoBinario.esNodoVacio(nodoA)){
+            if (NodoBinario.esNodoVacio(nodoB)){
+                return true;
+            }
+            return false;
+        }
+        if( NodoBinario.esNodoVacio(nodoB)){
+            if (!NodoBinario.esNodoVacio(nodoA)){
+                return false;
+            }
+            return false;
+        }
+        K claveA = nodoA.getClave();
+        K claveB = nodoB.getClave();
+        if (claveA.compareTo(claveB) != 0){
+            return false;
+        }
+        boolean izquierdo = this.esIdentico(nodoA.getHijoIzquierdo(), nodoB.getHijoIzquierdo());
+        boolean derecho = this.esIdentico(nodoA.getHijoDerecho(), nodoB.getHijoDerecho());
+        return izquierdo && derecho;
+    }
+        //modelo examen
+        //2/20 Parcial 1 pregunta 3 arbolBinario metodo sixe iterativo en recorrido inOrden"
+        public int sixeIterativoInOrden(){
+            if (this.esArbolVacio()){
+                return 0;
+            }
+            int cantidad = 0;
+            Stack<NodoBinario<K,V>> pilaDeNodos =  new Stack<>();
+            NodoBinario<K,V> nodoActual = this.raiz;
+            while (!NodoBinario.esNodoVacio(nodoActual)){
+                pilaDeNodos.push(nodoActual);
+                nodoActual = nodoActual.getHijoIzquierdo();
+            }
+            while (!pilaDeNodos.isEmpty()){
+                nodoActual = pilaDeNodos.pop();
+                cantidad++;
+                nodoActual = nodoActual.getHijoDerecho();
+                while (!NodoBinario.esNodoVacio(nodoActual)) {
+                    pilaDeNodos.push(nodoActual);
+                    nodoActual = nodoActual.getHijoIzquierdo();
+                }
+            }
+            return cantidad;
+        }
 }
+    

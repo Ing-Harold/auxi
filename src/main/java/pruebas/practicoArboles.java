@@ -48,7 +48,7 @@ public class practicoArboles {
         arbolMvias.insertar(50, 10);  arbolMvias.insertar(70, 10);   arbolMvias.insertar(75, 10);
         arbolMvias.insertar(72, 10);  
         arbolMvias.insertar(98, 10);   arbolMvias.insertar(110, 10);
-        arbolMvias.insertar(130, 10);  arbolMvias.insertar(140, 10); arbolMvias.insertar(150, 10);
+        arbolMvias.insertar(130, 10);  arbolMvias.insertar(140, 140); arbolMvias.insertar(150, 10);
         arbolMvias.insertar(134, 10);
         arbolMvias.insertar(160, 10);  arbolMvias.insertar(170, 10); arbolMvias.insertar(190, 10);
         arbolMvias.insertar(158, 10);
@@ -144,6 +144,18 @@ public class practicoArboles {
         System.out.println("\n9. Para un árbol b implemente un método que retorne verdadero si todos sus nodos no hojas \n" +
 "no tienen datos vacíos, falso en caso contrario");
         System.out.println("Falso =  " + arbolB.pregunta9());
-    }
-    
+        System.out.println("2/20 Parcial 1 pregunta 1  arbol binario que retorne verdaero si el arbol recibido es identico al arbol recibido");
+        ArbolBinarioBusqueda<Integer,Integer> arbolBinario2 = new ArbolBinarioBusqueda<>();
+        arbolBinario2.insertar(40, 21);
+        arbolBinario2.insertar(30, 21);arbolBinario2.insertar(70, 21);
+        arbolBinario2.insertar(15, 21);arbolBinario2.insertar(35, 21);
+        arbolBinario2.insertar(55, 21);arbolBinario2.insertar(87, 21);
+        arbolBinario2.insertar(48, 21);arbolBinario2.insertar(63, 21);
+        System.out.println("el arbl es similar true = " + arbolBinario.esIdentico(arbolBinario2));
+        System.out.println("2/20 Parcial 1 pregunta 2 arbolMVias sobreescriba el metodo Buscar utilizando recursividad");
+        System.out.println("El valor de la clave 140 es 140 = " + arbolMvias.buscarRecursivo(140));
+        System.out.println("2/20 Parcial 1 pregunta 3 arbolBinario metodo sixe iterativo en recorrido inOrden");
+        System.out.println("Sixe del arbol Binario = " + arbolBinario.sixeIterativoInOrden());
+    }    
+
 }

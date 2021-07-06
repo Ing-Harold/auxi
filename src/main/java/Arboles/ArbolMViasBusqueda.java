@@ -596,4 +596,42 @@ public class ArbolMViasBusqueda <K extends Comparable<K>, V> implements
             }
         }
     }
+    //modelo de examen
+    //2/20 Parcial 1 pregunta 2 arbolMVias sobreescriba el metodo Buscar utilizando recursividad
+    public V buscarRecursivo(K claveABuscar){
+        return this.buscarRecursivo1(this.raiz,claveABuscar);
+    }
+    private V buscarRecursivo(NodoMVias<K,V> nodoActual, K claveABuscar){
+        if (NodoMVias.esNodoVacio(nodoActual)){
+            return (V) NodoMVias.datoVacio();
+        }
+        V valorActual = (V)NodoMVias.datoVacio();
+        int posicionDeClave = this.obtenerPosicionClaveEnNodo(nodoActual, claveABuscar);
+        if (posicionDeClave != this.POSICION_INVALIDA){
+            return nodoActual.getValor(posicionDeClave);
+        }
+        int posicionPorDondeBajar = this.obtenerPosicionPorDondeBajar(nodoActual, claveABuscar);
+        valorActual = this.buscarRecursivo(nodoActual.getHijo(posicionPorDondeBajar), claveABuscar);
+        return valorActual;
+    }
+    private V buscarRecursivo1(NodoMVias<K,V> nodoActual, K claveABuscar){
+        if (NodoMVias.esNodoVacio(nodoActual)){
+            return (V) NodoMVias.datoVacio();
+        }
+        V valorActual = (V)NodoMVias.datoVacio();
+        for (int i = 0; i < nodoActual.cantidadDeClavesNoVacios(); i ++){
+            K claveActual = nodoActual.getClave(i);
+            if (claveABuscar.compareTo(claveActual) == 0){
+                return nodoActual.getValor(i);
+            }else {
+                if (claveABuscar.compareTo(claveActual) < 0){
+                    valorActual = this.buscarRecursivo1(nodoActual.getHijo(i), claveABuscar);
+                }
+            }
+        }
+        if (valorActual == (V)NodoMVias.datoVacio()){
+            valorActual = this.buscarRecursivo1(nodoActual.getHijo(nodoActual.cantidadDeClavesNoVacios()), claveABuscar);
+        }
+        return valorActual;
+    }
 }
