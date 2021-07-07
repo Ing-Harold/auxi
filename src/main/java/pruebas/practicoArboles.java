@@ -33,9 +33,11 @@ public class practicoArboles {
     public static void main(String[] args) throws ExcepcionOrdenInvalido {
         ArbolBinarioBusqueda<Integer,Integer> arbolBinario = new ArbolBinarioBusqueda<>();
         arbolBinario.insertar(40, 21);
-        arbolBinario.insertar(30, 21);arbolBinario.insertar(70, 21);
+        arbolBinario.insertar(30, 21);
+        arbolBinario.insertar(70, 21);
         arbolBinario.insertar(15, 21);arbolBinario.insertar(35, 21);
-        arbolBinario.insertar(55, 21);arbolBinario.insertar(87, 21);
+        arbolBinario.insertar(55, 21);
+        arbolBinario.insertar(87, 21);
         arbolBinario.insertar(48, 21);arbolBinario.insertar(63, 21);
 
         AVL<Integer,Integer> arbolAVL = new AVL<>();
@@ -67,7 +69,9 @@ public class practicoArboles {
 "medias de árboles m vias de búsqueda y arboles B");
         // ARBOL BINARIO
         System.out.println(" \nARBOL BINARIO ");
+        System.out.println("arbolBinario " + arbolBinario.toString());
         System.out.println("SIXE arbolBinario " + arbolBinario.sixe());
+              
         System.out.println("Cantidad hojas recursivo " + arbolBinario.cantidadHojasRec());
         System.out.println("Recorrido por Niveles" + arbolBinario.recorridoPorNiveles());
         System.out.println("Recorrido en PreOrden" + arbolBinario.recorridoEnPreOrden());
@@ -156,6 +160,19 @@ public class practicoArboles {
         System.out.println("El valor de la clave 140 es 140 = " + arbolMvias.buscarRecursivo(140));
         System.out.println("2/20 Parcial 1 pregunta 3 arbolBinario metodo sixe iterativo en recorrido inOrden");
         System.out.println("Sixe del arbol Binario = " + arbolBinario.sixeIterativoInOrden());
+       
+
+//Para un árbol binario implemente un método que retorne verdadero si el arbol es un monticulo, falso en caso contrario. 
+//1 Un árbol binario es monticulo si las clave almacenada en un nodo es menor que las claves almacenadas en sus hijos.
+        System.out.println("1/21 Parcial 1 pregunta 1 arbolBinario es MOnticulo");
+        System.out.println("es monticulo falso = " + arbolBinario.esMonticulo());
+//2 Para un árbol mvias de búsqueda implemente un método que retorne cuantos hijos no vacios hay en el nivel n del árbol.
+        System.out.println("1/21 Parcial 1 pregunta 2 cantidad hijos no vacios desde nivel");
+        System.out.println("cantidad nodod no vacio desde nivel 1 son 3 =  " + arbolMvias.noVaciosNivel(1));
+//3 Para un arbol binario de búsqueda implemente un metodo que retorne la mayor clave en dicho árbol. 
+        //Su implementación debe ser lo más eficiente posible aprovechandolas caracteristicas de un árbol binario de busqueda
+        System.out.println("1/21 Parcial 1 pregunta 3 mayorClave en arbol Binario");
+        System.out.println("la mayor clave es 87 =  " + arbolBinario.mayorClave());
     }    
 
 }

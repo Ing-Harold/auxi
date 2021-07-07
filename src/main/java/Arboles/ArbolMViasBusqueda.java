@@ -634,4 +634,22 @@ public class ArbolMViasBusqueda <K extends Comparable<K>, V> implements
         }
         return valorActual;
     }
+    public int noVaciosNivel(int n){
+        return noVaciosNivel(this.raiz,n);
+    }
+    private int noVaciosNivel(NodoMVias<K,V> nodoActual, int n){
+        if (NodoMVias.esNodoVacio(nodoActual)){
+            return 0;
+        }
+        int cantidad = 0;
+        for (int i = 0 ; i < this.orden ; i ++ ){
+            cantidad += this.noVaciosNivel(nodoActual.getHijo(i),n - 1);
+            if (n == 0 ){
+                if (!NodoMVias.esNodoVacio(nodoActual.getHijo(i)))
+                cantidad ++;   
+            }   
+        }
+        return cantidad;
+    }
+
 }

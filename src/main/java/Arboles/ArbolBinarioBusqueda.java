@@ -568,5 +568,48 @@ public class ArbolBinarioBusqueda <K extends Comparable<K>, V>
             }
             return cantidad;
         }
+        //parcial 1 / 2021 
+        public boolean esMonticulo(){
+         if (esArbolVacio()){
+             return true;
+         }
+         Queue<NodoBinario<K,V>> colaDeNodos = new LinkedList<>();
+         colaDeNodos.offer(this.raiz);
+         while(!colaDeNodos.isEmpty()){
+             NodoBinario<K,V> nodoActual = colaDeNodos.poll();
+             NodoBinario<K,V> nodoHijo = (NodoBinario<K,V>)NodoBinario.nodoVacio();
+             if(!nodoActual.esVacioHijoIzquierdo()){
+                 nodoHijo = nodoActual.getHijoIzquierdo();
+                 K claveActual = nodoActual.getClave();
+                 K claveHijo = nodoHijo.getClave();
+                 if (claveActual.compareTo(claveHijo) >= 0){
+                     return false;
+                 }
+                 colaDeNodos.add(nodoActual.getHijoIzquierdo());
+             }
+             if(!nodoActual.esVacioHijoDerecho()){
+                 nodoHijo = nodoActual.getHijoDerecho();
+                 K claveActual = nodoActual.getClave();
+                 K claveHijo = nodoHijo.getClave();
+                 if (claveActual.compareTo(claveHijo) >= 0){
+                     return false;
+                 }
+                 colaDeNodos.add(nodoActual.getHijoDerecho());
+             }
+             
+         }
+         return true;
+     }
+     public K mayorClave(){
+        NodoBinario<K,V> nodoAnterior = (NodoBinario<K,V>)NodoBinario.nodoVacio();
+        NodoBinario<K,V> nodoActual = this.raiz;
+        //si es arbol vacioo retornara null
+        while (!NodoBinario.esNodoVacio(nodoActual)){
+            nodoAnterior = nodoActual;
+            nodoActual = nodoActual.getHijoDerecho();
+        }
+        return nodoAnterior.getClave();
+    }   
+     
 }
     
